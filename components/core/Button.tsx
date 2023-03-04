@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 
 export const Button = styled(ButtonMui)(({ theme }) => ({
   width: '100%',
+  color: theme.palette.text.secondary,
   margin: theme.spacing(1),
   backgroundColor: theme.palette.secondary.main,
   '&:hover': {
