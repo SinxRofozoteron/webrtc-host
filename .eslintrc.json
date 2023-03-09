@@ -2,7 +2,6 @@
   "extends": [
     "eslint:recommended", 
     "plugin:react/recommended", 
-    "plugin:prettier/recommended", 
     "plugin:import/recommended",
     "plugin:import/typescript",
     "next/core-web-vitals"
@@ -45,6 +44,8 @@
     }
   ],
   "rules": {
+    "semi": ["error", "always"],
+    "arrow-parens": ["error", "as-needed"],
     "react/require-default-props": "off",
     "import/order": [
       "error",
