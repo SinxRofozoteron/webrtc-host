@@ -1,4 +1,8 @@
 {
+  "env": {
+    "es2020": true,
+    "jest": true
+  },
   "extends": [
     "eslint:recommended", 
     "plugin:react/recommended", 
@@ -48,7 +52,8 @@
     "prettier/prettier": [
       "error",
       {
-        "printWidth": 88
+        "printWidth": 88,
+        "arrowParens": "avoid"
       }
     ],
     "max-len": ["error", {
