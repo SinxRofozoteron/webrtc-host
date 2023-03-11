@@ -1,8 +1,9 @@
 import '../styles/globals.css';
-import type { AppProps } from 'next/app';
 
-import { Layout } from '../components/common/Layout';
-import { ThemeProvider, IntlProvider } from '../components/wrappers';
+import { Layout } from '../src/components/common/Layout';
+import { ThemeProvider, IntlProvider } from '../src/components/wrappers';
+
+import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
