@@ -3,5 +3,6 @@
     "common.signIn": "Sign In",
     "common.signUp": "Sign Up",
     "loginModal.loginInputLabel": "Username or Email",
-    "loginModal.passwordInputLabel": "Password"
+    "loginModal.passwordInputLabel": "Password",
+    "callWindow.videoConfig.label": "Video Input"
 }
