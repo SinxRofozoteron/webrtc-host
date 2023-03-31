@@ -1,3 +1,4 @@
-const { configure } = require('@testing-library/react');
+import { configure } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 configure({ testIdAttribute: 'data-test' });
