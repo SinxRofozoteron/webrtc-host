@@ -1,5 +1,5 @@
 import { IntlProvider as IntlProviderRow } from 'react-intl';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import messages from '../../locales';
 
