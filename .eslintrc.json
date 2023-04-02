@@ -63,6 +63,7 @@
     }],
     "semi": ["error", "always"],
     "arrow-parens": ["error", "as-needed"],
+    "prefer-const": ["error"],
     "react/require-default-props": "off",
     "import/order": [
       "error",
