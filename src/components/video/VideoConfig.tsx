@@ -5,8 +5,14 @@ import { FormattedMessage } from 'react-intl';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
+import { styled } from '@mui/material/styles';
 
 import { DEVICE_KINDS } from '../../constants';
+
+const StyledFormLabel = styled(FormLabel)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.palette.text.secondary
+}));
 
 const LABEL_ID = 'video-devices-radio-btn-group';
 
@@ -47,9 +53,9 @@ export const VideoConfig = ({ onChange, value }: VideoConfigProps) => {
 
   return (
     <FormControl>
-      <FormLabel id={LABEL_ID}>
+      <StyledFormLabel id={LABEL_ID}>
         <FormattedMessage id="callWindow.videoConfig.label" />
-      </FormLabel>
+      </StyledFormLabel>
       <RadioGroup
         aria-labelledby={LABEL_ID}
         onChange={e => onChange(e.target.value)}
