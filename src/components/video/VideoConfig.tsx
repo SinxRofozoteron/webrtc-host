@@ -14,6 +14,10 @@ const StyledFormLabel = styled(FormLabel)(({ theme }) => ({
   color: theme.palette.text.secondary
 }));
 
+const StyledFromControlLabel = styled(FormControlLabel)`
+  justify-content: center;
+`;
+
 const LABEL_ID = 'video-devices-radio-btn-group';
 
 type VideoConfigProps = {
@@ -61,7 +65,7 @@ export const VideoConfig = ({ onChange, value }: VideoConfigProps) => {
         onChange={e => onChange(e.target.value)}
         value={value}>
         {devices?.map(device => (
-          <FormControlLabel
+          <StyledFromControlLabel
             value={device.deviceId}
             control={<Radio />}
             label={device.label}
