@@ -11,6 +11,7 @@ import { DEVICE_KINDS } from '../../constants';
 
 import { MediaDeviceContext } from './MediaDeviceContext';
 import { NoPermissionText } from './NoPermissionText';
+import { type ConfigComponentProps } from './types';
 
 const StyledFormLabel = styled(FormLabel)(({ theme }) => ({
   textAlign: 'center',
@@ -23,12 +24,7 @@ const StyledFromControlLabel = styled(FormControlLabel)`
 
 const LABEL_ID = 'video-devices-radio-btn-group';
 
-type VideoConfigProps = {
-  onChange: (deviceId: ConstrainDOMString) => void;
-  value: ConstrainDOMString | null;
-};
-
-export const VideoConfig = ({ onChange, value }: VideoConfigProps) => {
+export const VideoConfig = ({ onChange, value }: ConfigComponentProps) => {
   const devices = useContext(MediaDeviceContext);
 
   // If no video devices present set this variable to []
