@@ -3,14 +3,16 @@ import Typography from '@mui/material/Typography';
 import { type ReactNode, useState, type DOMAttributes } from 'react';
 import { styled } from '@mui/material/styles';
 
+const iconContainerClass = 'icon-container';
+
 const LabelContainer = styled('div')<{ open: boolean }>(({ theme, ...props }) => ({
   width: props.open ? 'auto' : '0px',
   height: '4rem',
   paddingLeft: props.open ? '2.5rem' : '0px',
-  paddingRight: '2rem',
-  position: 'absolute',
+  flexWrap: 'nowrap',
+  position: 'relative',
   borderRadius: '0 4rem 4rem 0',
-  left: '2rem',
+  left: '-2rem',
   display: 'inline-flex',
   alignItems: 'center',
   alignContent: 'center',
@@ -23,7 +25,7 @@ const LabelContainer = styled('div')<{ open: boolean }>(({ theme, ...props }) =>
     height: '5rem',
     paddingLeft: props.open ? '3rem' : '0px',
     borderRadius: '0 5rem 5rem 0',
-    left: '2.5rem'
+    left: '-2.5rem'
   }
 }));
 
@@ -40,20 +42,20 @@ const IconContainer = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     height: '5rem',
     width: '5rem'
-  },
-  '&:hover': {
-    backgroundColor: theme.palette.primary.light
   }
 }));
 
 const CustomButton = styled('button')(({ theme }) => ({
   display: 'inline-flex',
+  position: 'relative',
   borderRadius: '4rem',
   border: `2px solid ${theme.palette.text.primary}`,
   cursor: 'pointer',
   backgroundColor: theme.palette.primary.main,
   '&:hover': {
-    backgroundColor: 'red'
+    [`& .${iconContainerClass}`]: {
+      backgroundColor: theme.palette.primary.light
+    }
   }
 }));
 
@@ -75,10 +77,12 @@ export const RoundButton = ({ children, label, onClick }: RoundButtonProps) => {
       onMouseEnter={handleBtnExtend}
       onMouseLeave={handleBtnCollapse}
       aria-label={label}>
-      <IconContainer>{children}</IconContainer>
+      <IconContainer className={iconContainerClass}>{children}</IconContainer>
       <LabelContainer open={open}>
         <Collapse in={open} orientation="horizontal">
-          <Typography color="text.primary">{label}</Typography>
+          <Typography color="text.primary" noWrap>
+            {label}
+          </Typography>
         </Collapse>
       </LabelContainer>
     </CustomButton>
