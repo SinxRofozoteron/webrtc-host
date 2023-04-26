@@ -1,9 +1,9 @@
+import { styled } from '@mui/material/styles';
 import Collapse from '@mui/material/Collapse';
 import Typography from '@mui/material/Typography';
-import { type ReactNode, useState, type DOMAttributes } from 'react';
-import { styled } from '@mui/material/styles';
+import { type ReactNode } from 'react';
 
-const iconContainerClass = 'icon-container';
+import { ICON_CONTAINER_CLASS } from './constants';
 
 const LabelContainer = styled('div')<{ open: boolean }>(({ theme, ...props }) => ({
   width: props.open ? 'auto' : '0px',
@@ -45,39 +45,16 @@ const IconContainer = styled('div')(({ theme }) => ({
   }
 }));
 
-const CustomButton = styled('button')(({ theme }) => ({
-  display: 'inline-flex',
-  position: 'relative',
-  borderRadius: '4rem',
-  border: `2px solid ${theme.palette.text.primary}`,
-  cursor: 'pointer',
-  backgroundColor: theme.palette.primary.main,
-  '&:hover': {
-    [`& .${iconContainerClass}`]: {
-      backgroundColor: theme.palette.primary.light
-    }
-  }
-}));
-
-type RoundButtonProps = {
+type ButtonInsideProps = {
+  open: boolean;
   children: ReactNode;
   label: string;
-  onClick: DOMAttributes<HTMLButtonElement>['onClick'];
 };
 
-export const RoundButton = ({ children, label, onClick }: RoundButtonProps) => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const handleBtnExtend = () => setOpen(true);
-  const handleBtnCollapse = () => setOpen(false);
-
+export const ButtonInside = ({ open, children, label }: ButtonInsideProps) => {
   return (
-    <CustomButton
-      onClick={onClick}
-      onMouseEnter={handleBtnExtend}
-      onMouseLeave={handleBtnCollapse}
-      aria-label={label}>
-      <IconContainer className={iconContainerClass}>{children}</IconContainer>
+    <>
+      <IconContainer className={ICON_CONTAINER_CLASS}>{children}</IconContainer>
       <LabelContainer open={open}>
         <Collapse in={open} orientation="horizontal">
           <Typography color="text.primary" noWrap>
@@ -85,6 +62,6 @@ export const RoundButton = ({ children, label, onClick }: RoundButtonProps) => {
           </Typography>
         </Collapse>
       </LabelContainer>
-    </CustomButton>
+    </>
   );
 };
