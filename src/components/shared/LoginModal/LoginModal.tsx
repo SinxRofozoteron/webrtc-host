@@ -4,8 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { FormattedMessage } from 'react-intl';
 import { useState } from 'react';
 
-import { Modal, FormInput, type FormInputProps } from '../../../../components/core';
-import { Button } from '../../../../components/core';
+import { Modal, FormInput, type FormInputProps, Button } from '../../core';
 
 type LoginModalProps = {
   open: ModalProps['open'];
@@ -18,10 +17,10 @@ export const LoginModal = ({ open, onClose }: LoginModalProps) => {
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const loginChangeHandler: FormInputProps['onChange'] = (event) => {
+  const loginChangeHandler: FormInputProps['onChange'] = event => {
     setLogin(event.target.value);
   };
-  const passwordChangeHandler: FormInputProps['onChange'] = (event) => {
+  const passwordChangeHandler: FormInputProps['onChange'] = event => {
     setPassword(event.target.value);
   };
 

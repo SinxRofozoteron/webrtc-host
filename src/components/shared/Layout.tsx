@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import Head from 'next/head';
 
+import { Main } from './Main';
 import { Header } from './header/Header';
 
 type LayoutProps = {
@@ -14,7 +15,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Header />
-      {children}
+      <Main>{children}</Main>
     </>
   );
 };

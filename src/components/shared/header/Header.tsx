@@ -5,9 +5,13 @@ import { AppNavigation } from './Navigation';
 
 const HeaderWrapper = styled('header')(({ theme }) => ({
   display: 'flex',
+  position: 'fixed',
+  width: '100%',
+  padding: '5px',
   justifyContent: 'flex-start',
   [theme.breakpoints.up('sm')]: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    padding: '10px'
   }
 }));
 

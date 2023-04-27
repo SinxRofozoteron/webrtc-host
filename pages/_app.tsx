@@ -2,7 +2,7 @@ import '../styles/globals.css';
 
 import { SessionProvider } from 'next-auth/react';
 
-import { Layout } from '../src/components/common/Layout';
+import { Layout } from '../src/components/shared/Layout';
 import { AppWrapper } from '../src/components/wrappers';
 
 import type { AppProps } from 'next/app';
