@@ -1,7 +1,7 @@
 import { ThemeProvider as ThemeProviderMui } from '@mui/material/styles';
 import { type ReactNode } from 'react';
 
-import retroTheme from './retroTheme';
+import retroTheme from './mainTheme';
 
 type ThemeProviderProps = {
   children: ReactNode;
