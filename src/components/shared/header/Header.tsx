@@ -1,24 +1,35 @@
 import { styled } from '@mui/material/styles';
 
 import { LoginButton } from './LoginButton';
-import { AppNavigation } from './Navigation';
+import { WideScreenNavigation } from './WideScreenNavigation';
+import { LOGIN_BTN_ID, WIDE_SCREEN_NAV_ID, HEADER_MENU_ID } from './constants';
+import { HeaderMenu } from './HeaderMenu';
 
 const HeaderWrapper = styled('header')(({ theme }) => ({
   display: 'flex',
   position: 'fixed',
   width: '100%',
-  padding: '5px',
+  padding: '10px',
   justifyContent: 'flex-start',
+  [theme.breakpoints.down('sm')]: {
+    [`& #${LOGIN_BTN_ID}, & #${WIDE_SCREEN_NAV_ID}`]: {
+      display: 'none'
+    }
+  },
   [theme.breakpoints.up('sm')]: {
     justifyContent: 'space-between',
-    padding: '10px'
+    padding: '15px',
+    [`& #${HEADER_MENU_ID}`]: {
+      display: 'none'
+    }
   }
 }));
 
 export const Header = () => {
   return (
     <HeaderWrapper>
-      <AppNavigation />
+      <HeaderMenu />
+      <WideScreenNavigation />
       <LoginButton />
     </HeaderWrapper>
   );
