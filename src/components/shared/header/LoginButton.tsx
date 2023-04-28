@@ -5,6 +5,8 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 
 import { RoundButton } from '../../core';
 
+import { LOGIN_BTN_ID } from './constants';
+
 export const LoginButton = () => {
   const intl = useIntl();
   const { data: session } = useSession();
@@ -21,7 +23,10 @@ export const LoginButton = () => {
   const logoutLabel = intl.formatMessage({ id: 'common.logout' });
 
   return (
-    <RoundButton label={session ? logoutLabel : loginLabel} onClick={handleClick}>
+    <RoundButton
+      label={session ? logoutLabel : loginLabel}
+      onClick={handleClick}
+      id={LOGIN_BTN_ID}>
       {session ? <LogoutIcon /> : <LoginIcon />}
     </RoundButton>
   );
