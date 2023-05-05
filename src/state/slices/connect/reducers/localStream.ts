@@ -4,7 +4,7 @@ import { type ConnectState } from '../types';
 
 export const setLocalStreamReducer = (
   state: ConnectState,
-  action: PayloadAction<MediaStream>
+  action: PayloadAction<MediaStream | null>
 ) => {
   state.localStream = action.payload;
 };
