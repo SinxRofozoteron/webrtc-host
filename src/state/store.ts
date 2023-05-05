@@ -5,6 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import { connectReducer } from './slices';
+import listenerMiddleware from './listenerMiddleware/middleware';
 
 export const reducersMap = {
   connect: connectReducer
@@ -16,8 +17,16 @@ export const configureStore = (preloadedState?: PreloadedState<RootState>) => {
   const rootStore = configureRTKStore({
     devTools: true,
     preloadedState,
-    reducer: reducersMap
+    reducer: reducersMap,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({ serializableCheck: false }).prepend(
+        listenerMiddleware.middleware
+      )
   });
 
   return rootStore;
 };
+
+export type RootStore = ReturnType<typeof configureStore>;
+
+export type AppDispatch = RootStore['dispatch'];
