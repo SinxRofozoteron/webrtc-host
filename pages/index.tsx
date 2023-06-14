@@ -1,3 +1,7 @@
+import { type ReactNode } from 'react';
+
+import { Layout } from '../src/components/shared/Layout';
+
 export default function Home() {
   return (
     <>
@@ -5,3 +9,7 @@ export default function Home() {
     </>
   );
 }
+
+Home.getLayout = (page: ReactNode) => {
+  return <Layout>{page}</Layout>;
+};

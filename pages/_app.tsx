@@ -1,23 +1,18 @@
 import '../styles/globals.css';
 
-import { SessionProvider } from 'next-auth/react';
+import { type ReactNode } from 'react';
 
-import { Layout } from '../src/components/shared/Layout';
-import { AppWrapper } from '../src/components/wrappers';
+import { AppWrapper } from '../src/wrappers';
 
-import type { AppProps } from 'next/app';
+import type { AppProps as DefaultAppProps } from 'next/app';
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps }
-}: AppProps) {
-  return (
-    <AppWrapper>
-      <SessionProvider session={session}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </SessionProvider>
-    </AppWrapper>
-  );
+type AppProps = DefaultAppProps & {
+  Component: DefaultAppProps['Component'] & {
+    getLayout: (page: ReactNode) => ReactNode;
+  };
+};
+
+export default function App({ Component, pageProps }: AppProps) {
+  const getLayout = Component.getLayout || ((page: ReactNode) => page);
+  return <AppWrapper>{getLayout(<Component {...pageProps} />)}</AppWrapper>;
 }
