@@ -1,19 +1,12 @@
-import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+
+import { PageContainer } from '../core';
 
 import { GoogleButton } from './GoogleButton';
 
-const StyledContainer = styled(Container)(({ theme }) => ({
-  height: '100vh',
-  width: '100vw',
-  maxWidth: '100vw !important',
-  backgroundColor: theme.palette.background.default
-}));
-
 export const LoginPage = () => {
   return (
-    <StyledContainer>
+    <PageContainer>
       <Stack
         spacing={2}
         width="auto"
@@ -22,6 +15,6 @@ export const LoginPage = () => {
         justifyContent="center">
         <GoogleButton />
       </Stack>
-    </StyledContainer>
+    </PageContainer>
   );
 };
