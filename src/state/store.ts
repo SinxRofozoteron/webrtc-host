@@ -6,22 +6,26 @@ import {
 
 import { connectReducer } from './slices';
 import listenerMiddleware from './listenerMiddleware/middleware';
+import { webrtcApi } from './apis/webRtcService';
 
 export const reducersMap = {
-  connect: connectReducer
+  connect: connectReducer,
+  [webrtcApi.reducerPath]: webrtcApi.reducer
 };
 
 export type RootState = StateFromReducersMapObject<typeof reducersMap>;
 
 export const configureStore = (preloadedState?: PreloadedState<RootState>) => {
   const rootStore = configureRTKStore({
-    devTools: true,
+    devTools: {
+      name: 'WebRTC'
+    },
     preloadedState,
     reducer: reducersMap,
     middleware: getDefaultMiddleware =>
-      getDefaultMiddleware({ serializableCheck: false }).prepend(
-        listenerMiddleware.middleware
-      )
+      getDefaultMiddleware({ serializableCheck: false })
+        .prepend(listenerMiddleware.middleware)
+        .concat(webrtcApi.middleware)
   });
 
   return rootStore;
