@@ -3,3 +3,5 @@ export type AtLeastOne<T extends Record<string, any>> = keyof T extends infer K
     ? Pick<T, K & keyof T> & Partial<T>
     : never
   : never;
+
+export type Modify<T, R> = Omit<T, keyof R> & R;

@@ -1,5 +1,1 @@
-export type LoginCredentials = {
-  username?: string;
-  email?: string;
-  password: string;
-};
+export type UserRole = 'SuperAdmin' | 'Admin' | 'User';
