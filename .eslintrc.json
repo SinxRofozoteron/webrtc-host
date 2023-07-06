@@ -4,18 +4,22 @@
     "jest": true
   },
   "extends": [
-    "eslint:recommended", 
-    "plugin:react/recommended", 
-    "plugin:import/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
     "next/core-web-vitals"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier", "import"],
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "typescript": true,
+      "typescript": {
+        "project": "./tsconfig.json"
+      },
       "node": true
     }
   },
@@ -36,15 +40,9 @@
         "@typescript-eslint/consistent-type-exports": "error",
         "@typescript-eslint/method-signature-style": "error",
         "@typescript-eslint/prefer-ts-expect-error": "error",
-        "@typescript-eslint/consistent-generic-constructors": [
-          "error",
-          "constructor"
-        ],
-        "@typescript-eslint/consistent-type-definitions": [
-          "error",
-          "type"
-        ],
-        "@typescript-eslint/no-unused-vars": ["error"]
+        "@typescript-eslint/consistent-generic-constructors": ["error", "constructor"],
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
       }
     }
   ],
@@ -56,10 +54,14 @@
         "arrowParens": "avoid"
       }
     ],
-    "max-len": ["error", {
-      "code": 88,
-      "ignoreRegExpLiterals": true
-    }],
+    "max-len": [
+      "error",
+      {
+        "code": 88,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "semi": ["error", "always"],
     "arrow-parens": ["error", "as-needed"],
     "prefer-const": ["error"],
@@ -70,6 +72,7 @@
         "newlines-between": "always",
         "groups": ["builtin", "external", "parent", "sibling", "index", "type"]
       }
-    ]
+    ],
+    "import/no-unresolved": "error"
   }
 }
