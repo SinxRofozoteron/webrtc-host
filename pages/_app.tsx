@@ -2,7 +2,7 @@ import '../styles/globals.css';
 
 import { type ReactNode } from 'react';
 
-import { AppWrapper } from '../src/wrappers';
+import { AppWrapper } from '../src/components/shared';
 
 import type { AppProps as DefaultAppProps } from 'next/app';
 
