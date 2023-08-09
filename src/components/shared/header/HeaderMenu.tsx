@@ -1,11 +1,10 @@
-import { styled } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@rtcapp/webrtc-ui/build/styles';
+import Fab from '@rtcapp/webrtc-ui/build/Fab';
+import MenuIcon from '@rtcapp/webrtc-ui/build/icons/Menu';
+import Menu from '@rtcapp/webrtc-ui/build/Menu';
+import MenuItem from '@rtcapp/webrtc-ui/build/MenuItem';
 import { useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
-
-import { Fab } from '../../core';
 
 import { LoginButton } from './LoginButton';
 import { HEADER_MENU_ID } from './constants';

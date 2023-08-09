@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@rtcapp/webrtc-ui/build/styles';
 
 import { Z_INDEX_LEVELS } from '../../../constants';
 

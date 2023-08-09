@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@rtcapp/webrtc-ui/build/styles';
 
 export const Main = styled('main')(({ theme }) => ({
   minHeight: '100vh',

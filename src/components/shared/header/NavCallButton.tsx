@@ -1,16 +1,11 @@
-import VideoChatIcon from '@mui/icons-material/VideoChat';
+import VideoChatIcon from '@rtcapp/webrtc-ui/build/icons/VideoChat';
+import RoundButton from '@rtcapp/webrtc-ui/build/RoundButton';
 import { useIntl } from 'react-intl';
-
-import { RoundButton } from '../../core';
 
 export const NavCallButton = () => {
   const intl = useIntl();
 
   const label = intl.formatMessage({ id: 'header.nav.findConversation' });
 
-  return (
-    <RoundButton route="/connect" label={label}>
-      <VideoChatIcon />
-    </RoundButton>
-  );
+  return <RoundButton href="/connect" label={label} icon={<VideoChatIcon />} />;
 };

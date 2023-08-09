@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@rtcapp/webrtc-ui/build/styles';
 import { useIntl } from 'react-intl';
 
 import { NavCallButton } from './NavCallButton';
