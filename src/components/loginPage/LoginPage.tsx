@@ -1,6 +1,6 @@
-import Stack from '@mui/material/Stack';
+import Stack from '@rtcapp/webrtc-ui/build/Stack';
 
-import { PageContainer } from '../core';
+import { PageContainer } from '../shared';
 
 import { GoogleButton } from './GoogleButton';
 
