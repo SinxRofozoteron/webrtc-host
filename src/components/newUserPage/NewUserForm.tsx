@@ -1,12 +1,12 @@
-import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
+import Grid from '@rtcapp/webrtc-ui/build/Grid';
+import Typography from '@rtcapp/webrtc-ui/build/Typography';
+import { styled } from '@rtcapp/webrtc-ui/build/styles';
 import { useState, useCallback, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 import { FormattedMessage } from 'react-intl';
 import { useRouter } from 'next/router';
+import LoadingButton from '@rtcapp/webrtc-ui/build/LoadingButton';
 
 import { isEmail } from '../../utils';
-import { Button, CircularProgress } from '../core';
 import { useCreateUserMutation } from '../../state/apis/webRtcService';
 
 import { verifyNotEmpty } from './helpers';
@@ -137,19 +137,21 @@ export const NewUserForm = ({ query }: NewUserFormProps) => {
           labelIntlId="newUserPage.emailInput.label"
         />
       </Grid>
-      <Grid justifyContent="center" xs={12}>
-        <Button
+      <Grid
+        justifyContent="center"
+        xs={12}
+        display="flex"
+        height="auto"
+        alignItems="flex-start">
+        <LoadingButton
           onClick={handleSubmit}
+          loading={isLoading}
           disabled={
             isLoading ||
             !!(firstNameError || lastNameError || usernameError || emailError)
           }>
-          {isLoading ? (
-            <CircularProgress color="text.secondary" />
-          ) : (
-            <FormattedMessage id="newUserPage.signUp" />
-          )}
-        </Button>
+          <FormattedMessage id="newUserPage.signUp" />
+        </LoadingButton>
       </Grid>
     </FormContainer>
   );

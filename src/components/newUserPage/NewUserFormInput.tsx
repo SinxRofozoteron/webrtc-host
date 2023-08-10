@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
-import { FormInput, type FormInputProps } from '../core';
+import TextField, { type TextFieldProps } from '@rtcapp/webrtc-ui/build/TextField';
+import { FormattedMessage } from 'react-intl';
 
 export type NewUserFormInputProps = {
   id: string;
@@ -22,7 +22,7 @@ export const NewUserFormInput = ({
   const [value, setValue] = useState<string>(initialValue);
   const [onBlurTriggered, setOnBlurTriggered] = useState(false);
 
-  const handleValueChange: FormInputProps['onChange'] = e => {
+  const handleValueChange: TextFieldProps['onChange'] = e => {
     const val = e.target.value;
     if (onBlurTriggered) {
       verifyInput(value);
@@ -38,15 +38,16 @@ export const NewUserFormInput = ({
   };
 
   return (
-    <FormInput
+    <TextField
       fullWidth
       value={value}
       id={id}
-      labelIntlId={labelIntlId}
+      variant="outlined"
+      label={<FormattedMessage id={labelIntlId} />}
       onChange={handleValueChange}
       onBlur={handleBlur}
       error={!!errorIntlId}
-      errorIntId={errorIntlId || undefined}
+      helperText={errorIntlId ? <FormattedMessage id={errorIntlId} /> : undefined}
     />
   );
 };
