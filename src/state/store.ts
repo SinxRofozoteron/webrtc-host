@@ -4,12 +4,9 @@ import {
   type StateFromReducersMapObject
 } from '@reduxjs/toolkit';
 
-import { connectReducer } from './slices';
-import listenerMiddleware from './listenerMiddleware/middleware';
 import { webrtcApi } from './apis/webRtcService';
 
 export const reducersMap = {
-  connect: connectReducer,
   [webrtcApi.reducerPath]: webrtcApi.reducer
 };
 
@@ -23,9 +20,7 @@ export const configureStore = (preloadedState?: PreloadedState<RootState>) => {
     preloadedState,
     reducer: reducersMap,
     middleware: getDefaultMiddleware =>
-      getDefaultMiddleware({ serializableCheck: false })
-        .prepend(listenerMiddleware.middleware)
-        .concat(webrtcApi.middleware)
+      getDefaultMiddleware({ serializableCheck: false }).concat(webrtcApi.middleware)
   });
 
   return rootStore;
