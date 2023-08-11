@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { AppWrapper } from '../../wrappers';
+import { AppWrapper } from '../shared';
 
 import { GoogleButton } from './GoogleButton';
 
