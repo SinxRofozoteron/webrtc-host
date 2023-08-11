@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import omit from 'lodash/omit';
 import * as nextRouter from 'next/router';
 
-import { AppWrapper } from '../../wrappers';
+import { AppWrapper } from '../shared';
 import messages from '../../locales';
 import { useCreateUserMutation } from '../../state/apis/webRtcService';
 
@@ -67,17 +67,17 @@ describe('<NewUserForm />', () => {
     });
 
     it('does not display errors on initial render', () => {
-      const foundElements = screen.queryAllByTestId('error-helper-text');
+      const foundElements = document.querySelectorAll('[id$=input-helper-text]');
       expect(foundElements).toHaveLength(0);
     });
 
     it(
-      'displays errors after clicking on Sign Up button' + 'when all fields are empty',
+      'displays errors after clicking on Sign Up button' + ' when all fields are empty',
       async () => {
         const signUpBtn = screen.getByRole('button');
         await user.click(signUpBtn);
 
-        const foundElements = screen.queryAllByTestId('error-helper-text');
+        const foundElements = screen.queryAllByText(messages.en['newUserPage.error']);
         expect(foundElements).toHaveLength(4);
       }
     );
