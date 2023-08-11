@@ -1,7 +1,5 @@
 const { ModuleFederationPlugin } = require('webpack').container;
 
-const { dependencies } = require('./package.json');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -13,8 +11,7 @@ const nextConfig = {
           filename: 'remoteEntry.js',
           remotes: {
             webrtcMfe: 'webrtcMfe@http://localhost:3002/remoteEntry.js'
-          },
-          shared: dependencies
+          }
         })
       );
     }
