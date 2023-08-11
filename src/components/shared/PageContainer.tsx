@@ -1,4 +1,4 @@
-import Box, { type BoxProps } from '@mui/material/Box';
+import Box, { type BoxProps } from '@rtcapp/webrtc-ui/build/Box';
 import { styled } from '@mui/material/styles';
 import get from 'lodash/get';
 
