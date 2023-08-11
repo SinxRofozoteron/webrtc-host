@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { AppWrapper } from '../../wrappers';
+import { AppWrapper } from '../shared';
 
 import { NewUserFormInput } from './NewUserFormInput';
 
